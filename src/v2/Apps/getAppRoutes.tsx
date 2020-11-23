@@ -16,6 +16,7 @@ import { routes as showRoutes } from "v2/Apps/Show/routes"
 import { routes as viewingRoomRoutes } from "./ViewingRoom/routes"
 import { consignRoutes } from "v2/Apps/Consign/consignRoutes"
 import { debugRoutes } from "./Debug/debugRoutes"
+import { exampleRoutes } from "./Example/exampleRoutes"
 
 export function getAppRoutes(): RouteConfig[] {
   return buildAppRoutes([
@@ -39,6 +40,9 @@ export function getAppRoutes(): RouteConfig[] {
     },
     {
       routes: conversationRoutes,
+    },
+    {
+      routes: exampleRoutes,
     },
     {
       routes: fairRoutes,
