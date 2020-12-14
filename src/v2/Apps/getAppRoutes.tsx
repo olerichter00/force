@@ -9,6 +9,7 @@ import { routes as consignRoutes } from "v2/Apps/Consign/consignRoutes"
 import { routes as conversationRoutes } from "v2/Apps/Conversation/routes"
 import { routes as debugRoutes } from "./Debug/debugRoutes"
 import { routes as fairRoutes } from "v2/Apps/Fair/routes"
+import { fairsRoutes } from "v2/Apps/Fairs/fairsRoutes"
 import { routes as featureRoutes } from "v2/Apps/Feature/routes"
 import { routes as identityVerificationRoutes } from "v2/Apps/IdentityVerification/routes"
 import { routes as orderRoutes } from "v2/Apps/Order/routes"
@@ -42,6 +43,9 @@ export function getAppRoutes(): RouteConfig[] {
     },
     {
       routes: fairRoutes,
+    },
+    {
+      routes: fairsRoutes,
     },
     {
       routes: featureRoutes,
