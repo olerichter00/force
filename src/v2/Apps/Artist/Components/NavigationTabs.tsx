@@ -1,4 +1,3 @@
-import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "v2/__generated__/NavigationTabs_artist.graphql"
 import { hasSections as showMarketInsights } from "v2/Apps/Artist/Components/MarketInsights/MarketInsights"
 import { SystemContextProps, withSystemContext } from "v2/Artsy"
@@ -19,8 +18,8 @@ interface Props extends SystemContextProps {
 export class NavigationTabs extends React.Component<Props> {
   @track((_props, _state, [tab, destination_path]: string[]) => ({
     action_type: Schema.ActionType.Click,
-    subject: tab,
     destination_path,
+    subject: tab,
   }))
   handleClick(tab: string, destination_path: string) {
     // noop
@@ -60,17 +59,15 @@ export class NavigationTabs extends React.Component<Props> {
         ? `Works for sale (${counts.forSaleArtworks.toLocaleString()})`
         : "Artworks"
 
-    return (
-      <>
-        {this.renderTab("Overview", route(""), {
-          exact: true,
-        })}
-        {statuses.artworks &&
-          this.renderTab(worksForSaleTabName, route("/works-for-sale"))}
-        {statuses.auctionLots &&
-          this.renderTab("Auction results", route("/auction-results"))}
-      </>
-    )
+    return [
+      this.renderTab("Overview", route(""), {
+        exact: true,
+      }),
+      statuses.artworks &&
+        this.renderTab(worksForSaleTabName, route("/works-for-sale")),
+      statuses.auctionLots &&
+        this.renderTab("Auction results", route("/auction-results")),
+    ]
   }
 
   render() {
@@ -85,11 +82,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       showTabs && (
-        <>
-          <Flex mx={[-2, 0]} data-test="navigationTabs">
-            <RouteTabs>{this.renderTabs()}</RouteTabs>
-          </Flex>
-        </>
+        <RouteTabs data-test="navigationTabs">{this.renderTabs()}</RouteTabs>
       )
     )
   }
